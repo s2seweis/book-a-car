@@ -74,3 +74,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 1. Arrowfunction = rfce
 2. .'name' = div + classname ### Check box right/bottom selected language: JavaScript JSX
+3. More Code Snippets: Best Extensions
+4. Extension: GoogleChrome, JSON Data
