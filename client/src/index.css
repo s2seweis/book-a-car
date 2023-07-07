@@ -8,7 +8,7 @@ body {
     font-family: 'Montserrat', sans-serif !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: azure;
+  /* background-color: azure; */
 }
 
 code {
@@ -46,6 +46,17 @@ p{
   background-color: white !important;
   color: orangered !important;
   border: 1px solid orangered !important;
+  padding: 5px 15px !important;
+  outline: none !important;
+
+}
+
+.btn1:focus {
+  border: none;
+}
+
+button{
+  /* padding: 5px 10px !important; */
 }
 
 .header {
@@ -92,3 +103,43 @@ p{
   /* transition: 0.1s; */
 }
 
+.login{
+  background-color: black;
+  min-height: 100vh;
+  padding-top: 50px;
+}
+
+.login label, .login h1 {
+  color: white !important;
+  opacity: 0.8;
+  position: absolute;
+}
+
+.login-form {
+  background-color: #1F1F1F;
+}
+
+.login-form input{
+  background-color: #333333 !important;
+  border: none !important;
+  color: white;
+  /* opacity: 0.5; */
+}
+
+.login-logo{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 65%;
+  bottom: 50%;
+  transform: translateY(-50%, -50%);
+  /* font-size: 40px; */
+  opacity: 0.5 !important;
+  border-bottom: 1pc;
+}
+
+
+.login a{
+  color: white !important;
+  opacity: 0.5;
+}
