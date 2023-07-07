@@ -1,24 +1,55 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import DefaultLayout from '../components/DefaultLayout';
-import { useSelector, useDispatch } from 'react-redux';
-import { getAllCars } from '../redux/actions/carsActions';
-
+import {useSelector, useDispatch} from 'react-redux';
+import {getAllCars} from '../redux/actions/carsActions';
+import {Button, Row, Col} from 'antd';
+import Spinner from '../components/Spinner';
 
 function Home () {
-  const {cars, loading} = useSelector(state => state.carsReducer)
-  const dispatch = useDispatch()
-  
-useEffect(() => {
-  dispatch(getAllCars())
-  
-}, [])
+  const {cars} = useSelector (state => state.carsReducer);
+  const {loading} = useSelector (state => state.alertsReducer);
+  const dispatch = useDispatch ();
 
-
+  useEffect (() => {
+    dispatch (getAllCars ());
+  }, []);
 
   return (
     <DefaultLayout>
-      <h1>Home Page</h1>
-      <h1>The length of cars array is {cars.length}</h1>
+
+      {loading == true && (<Spinner/>)}
+
+      <Row justify="center" gutter={16} className="mt-5">
+
+        {cars.map (car => {
+          return (
+            <Col lg={5} sm={24} xs={24}>
+
+              <div className="car p-2 bs1 ">
+
+                <img src={car.image} className="carimg" />
+
+                <div className="car-content d-flex align-items-center justify-content-between">
+
+                  <div>
+                    <p> {car.name} </p>
+                    <p> {car.rentPerHour} Rent Per Hour /-</p>
+                  </div>
+
+                  <div>
+                    <button className="btn1 mr-2">Book Now</button>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </Col>
+          );
+        })}
+
+      </Row>
+
     </DefaultLayout>
   );
 }

@@ -20,10 +20,32 @@ code {
   box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
+.spinner{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+}
+
 h1{
   font-size: 30px;
   font-weight: bold;
   color: orangered;
+}
+
+p{
+  margin: 5px !important;
+  text-align: left;
+  padding: 0;
+}
+
+
+
+.btn1{
+  box-shadow: none !important;
+  background-color: white !important;
+  color: orangered !important;
+  border: 1px solid orangered !important;
 }
 
 .header {
@@ -32,6 +54,41 @@ h1{
 }
 
 .content {
-  min-height: 10vh;
+  min-height: 0vh;
   /* background-color: azure; */
 }
+
+/* ### - Just for UI purpose */
+
+.car{
+  border-radius: 5px;
+  margin-top: 100px;
+  height: 160px;
+  transition: 0.3s;
+
+}
+
+.car:hover{
+  height: 220px;
+}
+
+.car:hover > .car-content{
+
+  opacity: 1;
+  transform: translateY(-40px);
+
+}
+
+.carimg {
+  height: 180px;
+  width: auto;
+  border-radius: 5px;
+  transform: translateY(-50px);
+}
+
+.car-content{
+  transform: translateY(-200px);
+  opacity: 0;
+  /* transition: 0.1s; */
+}
+
