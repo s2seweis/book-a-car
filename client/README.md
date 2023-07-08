@@ -78,3 +78,4 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 4. GoogleChrome Extensions: JSON Viewer, Redux DevTools, CSS Viewer
 5. Need a Redux playground in the future: create store deprecated instead configure store | Redux Toolkit is easier to use, go and find it out!
 6. Ant Design for Components | preferable for React Applications
+7. Replace react-router-dom v5 with v6 - https://www.robinwieruch.de/react-router-private-routes/

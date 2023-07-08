@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import DefaultLayout from '../components/DefaultLayout';
 import {useSelector, useDispatch} from 'react-redux';
 import {getAllCars} from '../redux/actions/carsActions';
-import {Button, Row, Col} from 'antd';
+import { Row, Col} from 'antd';
 import Spinner from '../components/Spinner';
 
 function Home () {
@@ -17,7 +17,7 @@ function Home () {
   return (
     <DefaultLayout>
 
-      {loading == true && (<Spinner/>)}
+      {loading === true && (<Spinner/>)}
 
       <Row justify="center" gutter={16} className="mt-5">
 
@@ -27,7 +27,7 @@ function Home () {
 
               <div className="car p-2 bs1 ">
 
-                <img src={car.image} className="carimg" />
+                <img src={car.image} className="carimg" alt='car-img' />
 
                 <div className="car-content d-flex align-items-center justify-content-between">
 
