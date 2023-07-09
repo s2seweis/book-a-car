@@ -1,9 +1,11 @@
 import React, {useEffect} from 'react';
-import DefaultLayout from '../components/DefaultLayout';
 import {useSelector, useDispatch} from 'react-redux';
+import DefaultLayout from '../components/DefaultLayout';
 import {getAllCars} from '../redux/actions/carsActions';
-import { Row, Col} from 'antd';
+import {Row, Col} from 'antd';
 import Spinner from '../components/Spinner';
+
+import {Link} from 'react-router-dom';
 
 function Home () {
   const {cars} = useSelector (state => state.carsReducer);
@@ -17,7 +19,7 @@ function Home () {
   return (
     <DefaultLayout>
 
-      {loading === true && (<Spinner/>)}
+      {loading === true && <Spinner />}
 
       <Row justify="center" gutter={16} className="mt-5">
 
@@ -27,7 +29,7 @@ function Home () {
 
               <div className="car p-2 bs1 ">
 
-                <img src={car.image} className="carimg" alt='car-img' />
+                <img src={car.image} className="carimg" alt="car-img" />
 
                 <div className="car-content d-flex align-items-center justify-content-between">
 
@@ -36,8 +38,16 @@ function Home () {
                     <p> {car.rentPerHour} Rent Per Hour /-</p>
                   </div>
 
+                  {/* <div>
+                    <button className="btn1 mr-2">
+                      <Link to={`/bookings/${car._id}`}>Book Now</Link>
+                    </button>
+                  </div> */}
+
                   <div>
-                    <button className="btn1 mr-2">Book Now</button>
+                    <button className="btn1 mr-2">
+                      <Link to={`/booking/${car._id}`}>Book Now</Link>
+                    </button>
                   </div>
 
                 </div>
