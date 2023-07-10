@@ -7,7 +7,7 @@ import Spinner from '../components/Spinner';
 import {Col, Row, Divider, DatePicker, Checkbox, Modal} from 'antd';
 
 import moment from 'moment';
-import { bookCar } from '../redux/actions/bookingActions';
+import {bookCar} from '../redux/actions/bookingActions';
 
 const {RangePicker} = DatePicker;
 
@@ -26,6 +26,9 @@ function BookingCar({match}) {
   // ###
   const [driver, setDriver] = useState (false);
   const [totalAmount, setTotalAmount] = useState (0);
+  console.log ('line:120', totalAmount);
+
+  const [showModal, setShowModal] = useState(false);
 
   useEffect (
     () => {
@@ -38,46 +41,37 @@ function BookingCar({match}) {
     [cars]
   );
 
-  useEffect(() => {
-
-    setTotalAmount((totalHours * car.rentPerHour) )
-    if(driver)
-    {
-      setTotalAmount(totalAmount + (30 * totalHours))
-    }
-
-  }, [driver, totalHours])
-  
+  useEffect (
+    () => {
+      setTotalAmount (totalHours * car.rentPerHour);
+      if (driver) {
+        setTotalAmount (totalAmount + 30 * totalHours);
+      }
+    },
+    [driver, totalHours]
+  );
 
   function selectTimeSlots (values) {
-    console.log (values);
-
-    console.log ('line:110', moment (values[0]).format ('MMM DD yyyy HH'));
-    console.log ('line:111', moment (values[1]).format ('MMM DD yyyy HH'));
-    setFrom (moment (values[0]).format ('MMM DD yyyy HH'));
-    setTo (moment (values[1]).format ('MMM DD yyyy HH'));
+    setFrom (moment (values[0]).format ('MMM DD yyyy HH:mm'));
+    setTo (moment (values[1]).format ('MMM DD yyyy HH:mm'));
 
     setTotalHours (values[1].diff (values[0], 'hours'));
   }
 
-  function bookNow() {
-
+  function bookNow () {
     const reqObj = {
-
-      user : JSON.parse(localStorage.getItem('user'))._id,
+      user: JSON.parse (localStorage.getItem ('user'))._id,
       car: car._id,
       totalHours,
       totalAmount,
-      driverRequire : driver, 
-      bookedTimeSlots : {
-        from, 
-        to
-      }
+      driverRequired: driver,
+      bookedTimeSlots: {
+        from,
+        to,
+      },
+    };
 
-    }
-
-    dispatch(bookCar(reqObj))
-
+    dispatch (bookCar (reqObj));
   }
 
   // const [value, setValue] = useState([]);
@@ -102,39 +96,82 @@ function BookingCar({match}) {
           <div style={{textAlign: 'right'}}>
             <p>{car.name}</p>
             <p>{car.rentPerHour} Rent Per Hour /-</p>
-            <p>Fuel : {car.fuelType} </p>
+            <p>Fuel Type : {car.fuelType} </p>
             <p>Capacity : {car.capacity} </p>
           </div>
 
           <Divider type="horizontal" dashed>Select Time Slots</Divider>
 
           <RangePicker
-            showTime={{format: 'HH'}}
-            format="MMM DD yyyy HH"
+            showTime={{format: 'HH:mm'}}
+            format="MMM DD yyyy HH:mm"
             onChange={selectTimeSlots}
           />
 
-          <div>
-            <p>Total Hours : <b> {totalHours} </b></p>
-            <p>Rent Per Hour : <b> {car.rentPerHour} </b></p>
-            <Checkbox onChange={(e) => {
-              if(e.target.checked)
-              {
-                setDriver(true)
-              }
-              else{
-                setDriver(false)
-              }
-            } }>Driver Required /- 30 per h</Checkbox>
+          <button
+            className="btn1 mt-2"
+            onClick={() => {
+              setShowModal (true);
+            }}
+          >
+            See Booked Slots
+          </button>
 
-            <h3>Total Amount : {totalAmount} </h3>
+          {from &&
+            to &&
+            <div>
+              <p>Total Hours : <b> {totalHours} </b></p>
+              <p>Rent Per Hour : <b> {car.rentPerHour} </b></p>
+              <Checkbox
+                onChange={e => {
+                  if (e.target.checked) {
+                    setDriver (true);
+                  } else {
+                    setDriver (false);
+                  }
+                }}
+              >
+                Driver Required /- 30 per h
+              </Checkbox>
 
-            <button onClick={bookNow} className='btn1'>Book Now</button>
+              <h3>Total Amount : {totalAmount} </h3>
 
-            {/* {hoursCharged} Total Hours */}
-          </div>
+              <button onClick={bookNow} className="btn1">Book Now</button>
+
+              {/* {hoursCharged} Total Hours */}
+            </div>}
         </Col>
       </Row>
+
+      {car.name && (
+          <Modal
+            visible={showModal}
+            closable={false}
+            footer={false}
+            title="Booked time slots"
+          >
+            <div className="p-2">
+              {car.bookedTimeSlots.map((slot) => {
+                return (
+                  <button className="btn1 mt-2">
+                    {slot.from} - {slot.to}
+                  </button>
+                );
+              })}
+
+              <div className="text-right mt-5">
+                <button
+                  className="btn1"
+                  onClick={() => {
+                    setShowModal(false);
+                  }}
+                >
+                  CLOSE
+                </button>
+              </div>
+            </div>
+          </Modal>
+        )}
 
     </DefaultLayout>
   );
