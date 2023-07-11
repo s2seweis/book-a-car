@@ -9,6 +9,8 @@ import {Col, Row, Divider, DatePicker, Checkbox, Modal} from 'antd';
 import moment from 'moment';
 import {bookCar} from '../redux/actions/bookingActions';
 
+import StripeCheckout from 'react-stripe-checkout';
+
 const {RangePicker} = DatePicker;
 
 function BookingCar({match}) {
@@ -28,7 +30,7 @@ function BookingCar({match}) {
   const [totalAmount, setTotalAmount] = useState (0);
   console.log ('line:120', totalAmount);
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState (false);
 
   useEffect (
     () => {
@@ -58,8 +60,15 @@ function BookingCar({match}) {
     setTotalHours (values[1].diff (values[0], 'hours'));
   }
 
-  function bookNow () {
+ 
+
+
+  function onToken(token) {
+
+
+
     const reqObj = {
+      token,
       user: JSON.parse (localStorage.getItem ('user'))._id,
       car: car._id,
       totalHours,
@@ -71,10 +80,10 @@ function BookingCar({match}) {
       },
     };
 
-    dispatch (bookCar (reqObj));
-  }
 
-  // const [value, setValue] = useState([]);
+    dispatch(bookCar(reqObj));
+
+  }
 
   return (
     <DefaultLayout>
@@ -136,42 +145,51 @@ function BookingCar({match}) {
 
               <h3>Total Amount : {totalAmount} </h3>
 
-              <button onClick={bookNow} className="btn1">Book Now</button>
+              <StripeCheckout
+              shippingAddress
+                token={onToken}
+                currency='inr'
+                amount={totalAmount * 100}
+                stripeKey="pk_test_51MSB2wIlCEHks7DgasuuHAllQvZd4jicmn6wWE2y7PaMEKfZmA8EHRMYL0w7nwiQ3XX45OKlICGcX4VYbENIpHCp00hdOnSYPY"
+              >
+
+                <button  className="btn1">Book Now</button>
+
+              </StripeCheckout>
 
               {/* {hoursCharged} Total Hours */}
             </div>}
         </Col>
       </Row>
 
-      {car.name && (
-          <Modal
-            visible={showModal}
-            closable={false}
-            footer={false}
-            title="Booked time slots"
-          >
-            <div className="p-2">
-              {car.bookedTimeSlots.map((slot) => {
-                return (
-                  <button className="btn1 mt-2">
-                    {slot.from} - {slot.to}
-                  </button>
-                );
-              })}
-
-              <div className="text-right mt-5">
-                <button
-                  className="btn1"
-                  onClick={() => {
-                    setShowModal(false);
-                  }}
-                >
-                  CLOSE
+      {car.name &&
+        <Modal
+          visible={showModal}
+          closable={false}
+          footer={false}
+          title="Booked time slots"
+        >
+          <div className="p-2">
+            {car.bookedTimeSlots.map (slot => {
+              return (
+                <button className="btn1 mt-2">
+                  {slot.from} - {slot.to}
                 </button>
-              </div>
+              );
+            })}
+
+            <div className="text-right mt-5">
+              <button
+                className="btn1"
+                onClick={() => {
+                  setShowModal (false);
+                }}
+              >
+                CLOSE
+              </button>
             </div>
-          </Modal>
-        )}
+          </div>
+        </Modal>}
 
     </DefaultLayout>
   );
