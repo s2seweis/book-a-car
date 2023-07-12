@@ -31,7 +31,7 @@ function UserBookings () {
             return (
               <Row gutter={16} className="bs1 mt-3 text-left">
                 <Col 
-                xl={6} lg={6} md={6} sm={6} xs={18}
+                // xl={6} lg={6} md={6} sm={6} xs={18}
                 >
                   <p><b>{booking.car.name}</b></p>
                   <p>Total hours : <b>{booking.totalHours}</b></p>
@@ -40,7 +40,7 @@ function UserBookings () {
                 </Col>
 
                 <Col 
-                lg={8} sm={8} xs={18}
+                lg={8} sm={8} xs={14}
                 >
                   <p>Transaction Id : <b style={{wordBreak:"break-word"}}>{booking.transactionId}</b></p>
                   <p>From: <b>{booking.bookedTimeSlots.from}</b></p>
@@ -53,8 +53,10 @@ function UserBookings () {
                 </Col>
 
                 <Col 
-                lg={6} sm={6} xs={18}
-                className="text-right">
+                // lg={6} sm={6} xs={18}
+                className="text-right"
+                style={{display:"flex", alignItems:"center", margin:"auto", justifyContent:"center"}}
+                >
                   <img
                     style={{borderRadius: 5}}
                     src={booking.car.image}

@@ -9,11 +9,21 @@ import moment from "moment";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { Popconfirm, message } from "antd";
 const { RangePicker } = DatePicker;
+
+
 function AdminHome() {
   const { cars } = useSelector((state) => state.carsReducer);
   const { loading } = useSelector((state) => state.alertsReducer);
   const [totalCars, setTotalcars] = useState([]);
+  console.log("line:4000", totalCars);
   const dispatch = useDispatch();
+
+  // # Test: query for the array
+  console.log("line:2000", cars );
+
+  const car1 = cars.map((car) => ({id: car._id, name: car.name}))
+
+  console.log( "line:3000", car1);
 
   useEffect(() => {
     dispatch(getAllCars());
@@ -59,7 +69,7 @@ function AdminHome() {
                     <Link to={`/editcar/${car._id}`}>
                       <EditOutlined
                         className="mr-3"
-                        style={{ color: "green", cursor: "pointer" }}
+                        style={{ color: "green", cursor: "progress" }}
                       />
                     </Link>
 
@@ -71,7 +81,7 @@ function AdminHome() {
                       cancelText="No"
                     >
                       <DeleteOutlined
-                        style={{ color: "red", cursor: "pointer" }}
+                        style={{ color: "red", cursor: "progress" }}
                       />
                     </Popconfirm>
                   </div>

@@ -52,7 +52,7 @@ function Login () {
               <Input />
             </Form.Item>
 
-            <button className="btn1 mt-2 mb-3">Login</button>
+            <button className="btn1 mt-2 mb-3">Login1</button>
 
             <br />
 

@@ -95,11 +95,11 @@ function BookingCar({match}) {
         className="d-flex align-items-center"
         style={{minHeight: '90vh'}}
       >
-        <Col lg={10} sm={24} xs={24}>
+        <Col style={{marginTop:"20px"}} lg={10} sm={24} xs={24}>
           <img src={car.image} className="carimg2 bs1" />
         </Col>
 
-        <Col lg={10} sm={24} xs={24} className="text-right">
+        <Col style={{display:"contents"}} lg={10} sm={24} xs={24} className="text-right">
           <Divider type="horizontal" dashed>Car Info</Divider>
 
           <div style={{textAlign: 'right'}}>
@@ -112,6 +112,7 @@ function BookingCar({match}) {
           <Divider type="horizontal" dashed>Select Time Slots</Divider>
 
           <RangePicker
+            style={{marginBottom:"100px"}}
             showTime={{format: 'HH:mm'}}
             format="MMM DD yyyy HH:mm"
             onChange={selectTimeSlots}
@@ -178,8 +179,9 @@ function BookingCar({match}) {
               );
             })}
 
-            <div className="text-right mt-5">
+            <div className="text-right mt-5" style={{marginBottom:"100px"}}>
               <button
+              style={{marginBottom:"100px"}}
                 className="btn1"
                 onClick={() => {
                   setShowModal (false);
