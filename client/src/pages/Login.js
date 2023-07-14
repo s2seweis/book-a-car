@@ -56,7 +56,12 @@ function Login () {
 
             <br />
 
-            <Link to="/register">Click here to Register</Link>
+
+            <div style={{marginBottom:"20px"}}>
+
+            <Link  to="/register">Click here to Register</Link>
+            </div>
+            <Link to="/">Test</Link>
 
           </Form>
         </Col>

@@ -11,6 +11,7 @@ function UserBookings () {
   const {bookings} = useSelector (state => state.bookingsReducer);
   const {loading} = useSelector (state => state.alertsReducer);
   const user = JSON.parse (localStorage.getItem ('user'));
+  console.log("line:5000", user.role);
 
   useEffect (() => {
     dispatch (getAllBookings ());

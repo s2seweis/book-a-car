@@ -14,6 +14,9 @@ import AddCar from './pages/AddCar';
 import AdminHome from './pages/AdminHome';
 import EditCar from './pages/EditCar';
 
+import React , {useState,useEffect} from 'react'
+
+
 function App() {
   return (
     <div className="App">
@@ -47,13 +50,33 @@ export default App;
 
 export function ProtectedRoute(props)
 {
+  console.log("line:105", props);
+
+//   const [items, setItems] = useState([]);
+//   console.log("line:9000",items );
+
+// useEffect(() => {
+//   const items = JSON.parse(localStorage.getItem('user'));
+//   if (items) {
+//    setItems(items);
+//   }
+// }, []);
+
+  const currentUser1 = JSON.parse(localStorage.getItem('user')) 
+  console.log("line:105", currentUser1?.role);
+  // console.log("line:8000", currentUser1.role );
+
+  // const currentUser2 = localStorage.getItem('user')
+  // console.log("line:9000", currentUser2);
 
 
-    if(localStorage.getItem('user'))
+
+    if(currentUser1?.role === "admin" )
     {
+      // return <Redirect to='/admin'/>
       return <Route {...props}/>
     }
-    else{
+    else {
       return <Redirect to='/login'/>
     }
 
