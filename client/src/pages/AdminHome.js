@@ -13,6 +13,7 @@ const { RangePicker } = DatePicker;
 
 function AdminHome() {
   const { cars } = useSelector((state) => state.carsReducer);
+  console.log("line:1003", cars);
   const { loading } = useSelector((state) => state.alertsReducer);
   const [totalCars, setTotalcars] = useState([]);
   console.log("line:4000", totalCars);

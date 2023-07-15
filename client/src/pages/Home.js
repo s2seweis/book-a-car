@@ -9,6 +9,9 @@ import moment from 'moment'
 const {RangePicker} = DatePicker
 function Home() {
     const {cars} = useSelector(state=>state.carsReducer)
+    // console.log("line:105", cars);
+    const {users} = useSelector(state=>state.usersReducer)
+    // console.log("line:107", users);
     const {loading} = useSelector(state=>state.alertsReducer)
     const [totalCars , setTotalcars] = useState([])
     const dispatch = useDispatch()

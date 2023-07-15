@@ -31,7 +31,8 @@ function DefaultLayout(props) {
         </a>
       </Menu.Item>
       <Menu.Item onClick={()=>{
-          localStorage.removeItem('user');
+          localStorage.clear();
+          // localStorage.removeItem('user');
           window.location.href='/login'
       }}>
           <li style={{color:'orangered'}}>Logout</li>
