@@ -80,7 +80,7 @@ button{
   transition: 0.3s;
 }
 .car:hover{
-  height :220px;
+  height :250px;
 }
 .car:hover > .car-content{
 

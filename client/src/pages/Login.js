@@ -57,11 +57,11 @@ function Login () {
             <br />
 
 
-            <div style={{marginBottom:"20px"}}>
-
+            <div style={{marginBottom:"15px"}}>
             <Link  to="/register">Click here to Register</Link>
             </div>
-            <Link to="/">Test</Link>
+            {/* <br style={{marginBottom:"20px"}} /> */}
+            <Link   to="/">Check out the Cars</Link>
 
           </Form>
         </Col>

@@ -12,6 +12,10 @@ const { RangePicker } = DatePicker;
 
 
 function AdminHome() {
+
+  const {users} = useSelector(state=>state.usersReducer)
+  console.log("line:107.1", users);
+
   const { cars } = useSelector((state) => state.carsReducer);
   console.log("line:1003", cars);
   const { loading } = useSelector((state) => state.alertsReducer);
@@ -35,7 +39,7 @@ function AdminHome() {
   }, [cars]);
 
   return (
-    <DefaultLayout>
+    <DefaultLayout users={users}>
       <Row justify="center" gutter={16} className="mt-2">
         <Col 
         lg={20} sm={24}
@@ -61,7 +65,7 @@ function AdminHome() {
                 <img src={car.image} className="carimg" />
 
                 <div className="car-content d-flex align-items-center justify-content-between">
-                  <div className="text-left pl-2">
+                  <div style={{marginTop:"25px"}} className="text-left pl-2">
                     <p>{car.name}</p>
                     <p> Rent Per Hour {car.rentPerHour} /-</p>
                   </div>

@@ -13,12 +13,15 @@ function UserBookings () {
   const user = JSON.parse (localStorage.getItem ('user'));
   console.log("line:5000", user.role);
 
+  const {users} = useSelector(state=>state.usersReducer)
+  console.log("line:107.1", users);
+
   useEffect (() => {
     dispatch (getAllBookings ());
   }, []);
 
   return (
-    <DefaultLayout>
+    <DefaultLayout users={users}>
       {loading && <Spinner />}
       <h3 className="text-center mt-2">My Bookings</h3>
 

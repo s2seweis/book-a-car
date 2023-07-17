@@ -12,6 +12,9 @@ function EditCar({ match }) {
   const [car, setcar] = useState();
   const [totalcars, settotalcars] = useState([]);
 
+  const {users} = useSelector (state => state.usersReducer);
+  console.log ('line:106', users);
+
   useEffect(() => {
     if (cars.length == 0) {
       dispatch(getAllCars());
@@ -30,7 +33,7 @@ function EditCar({ match }) {
   }
 
   return (
-    <DefaultLayout>
+    <DefaultLayout users={users}>
       {loading && <Spinner />}
       <Row justify="center mt-5">
         <Col lg={12} sm={20} xs={22} className='p-2'>

@@ -69,7 +69,7 @@ function Home() {
   }
 
     return (
-        <DefaultLayout>
+        <DefaultLayout users={users}>
 
              <Row className='mt-3' justify='center'>
                  

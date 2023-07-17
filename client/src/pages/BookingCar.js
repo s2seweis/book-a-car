@@ -14,6 +14,9 @@ import StripeCheckout from 'react-stripe-checkout';
 const {RangePicker} = DatePicker;
 
 function BookingCar({match}) {
+  const {users} = useSelector(state=>state.usersReducer)
+  console.log("line:107.1", users);
+
   const {cars} = useSelector (state => state.carsReducer);
   const {loading} = useSelector (state => state.alertsReducer);
   const [car, setcar] = useState ({});
@@ -86,7 +89,7 @@ function BookingCar({match}) {
   }
 
   return (
-    <DefaultLayout>
+    <DefaultLayout users={users}>
 
       {loading && <Spinner />}
 
