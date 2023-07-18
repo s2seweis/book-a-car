@@ -9,7 +9,8 @@ function DefaultLayout(props, users) {
 
 
   // console.log("line:108",props );
-  // console.log("line:109",props.users.role );
+  // console.log("line:108",props?.users );
+  // console.log("line:109",props?.users?.role );
     const user = JSON.parse(localStorage.getItem('user'))
 
 
@@ -19,6 +20,28 @@ function DefaultLayout(props, users) {
 
 
 
+  const menuGuest = (
+    <Menu>
+        <Menu.Item>
+        <a
+         
+          href="/login"
+        >
+          Login
+        </a>
+      </Menu.Item>
+      <Menu.Item>
+        <a
+          
+          href="/register"
+        >
+          Register
+        </a>
+      </Menu.Item>
+      
+   
+    </Menu>
+  );
   const menu = (
     <Menu>
         <Menu.Item>
@@ -70,7 +93,7 @@ function DefaultLayout(props, users) {
       <Menu.Item>
         <a
          
-          href="/admin"
+          href="/auth/admin"
         >
           Admin
         </a>
@@ -87,6 +110,8 @@ function DefaultLayout(props, users) {
 
   const test = props?.users?.role === "admin" ? menuAdmin :  menu
 
+
+
   
 
 
@@ -101,10 +126,47 @@ function DefaultLayout(props, users) {
              <h1 ><b><Link to='/' style={{color:'orangered'}}>SheyCars</Link></b></h1>
 
           {/* <Dropdown overlay={menu} placement="bottomCenter"> */}
-          <Dropdown overlay={test} placement="bottomCenter">
-            <Button>{user?.username || "Guest"}</Button>
-            {/* <Button>Guest</Button> */}
+
+          {/* ### */}
+
+        
+          
+          {/* ### */}          
+          {props?.users?.role === 'admin' && (
+            <Dropdown  overlay={test} placement="bottomCenter">
+          <Button >{user?.username || "Guest"}</Button>
           </Dropdown>
+          )}
+          {/* ### */}
+          {/* ### */}          
+          {props?.users?.role === 'user' && (
+            <Dropdown  overlay={test} placement="bottomCenter">
+          <Button >{user?.username || "Guest"}</Button>
+          </Dropdown>
+          )}
+          {/* ### */}
+          {/* ### */}        
+            
+          {props?.users?.role !==  'admin' && props?.users?.role !== 'user'   && (
+            <Dropdown  overlay={menuGuest} placement="bottomCenter">
+          <Button >{"Guest"}</Button>
+          </Dropdown>
+          )}
+          {/* ### */}
+          
+          
+  
+
+          
+
+          
+        
+
+          
+          {/* ### */}
+
+
+
         </div>
               </Col>
           </Row>
