@@ -31,13 +31,15 @@ function App () {
         <AdminRoute users={users} path="/" exact component={Home} />
         <UsersRoute users={users} path="/" exact component={Home} />
         <PublicRoute users={users} path="/" exact component={Home} />
+        {/* ### */}
 
-        <Route users={users} path="/" exact component={Home} />
-        {/* <AdminRoute path="/" exact component={Home} /> */}
+
         <Route users={users} path="/login" exact component={Login} />
         <Route users={users} path="/register" exact component={Register} />
+        {/* ### */}
         <AdminRoute users={users} path="/booking/:carid" exact component={BookingCar} />
         <AdminRoute users={users} path="/userbookings" exact component={UserBookings} />
+        
         <UsersRoute users={users} path="/userbookings" exact component={UserBookings} />
         <AdminRoute users={users} path="/addcar" exact component={AddCar} />
         <AdminRoute users={users} path="/editcar/:carid" exact component={EditCar} />
@@ -46,13 +48,13 @@ function App () {
         {/* <Redirect to="/" /> */}
         </AdminRoute>
         
-        <UsersRoute users={users} path="/admin" exact component={ErrorPage} >
+        <UsersRoute users={users} path="/user/admin" exact component={ErrorPage} >
           <Redirect to="/" />
           </UsersRoute>
         
 
         <PublicRoute users={users} path="/admin" exact component={ErrorPage} >
-        <Redirect to="/login" />
+        <Redirect to="/" />
         </PublicRoute>
 
 

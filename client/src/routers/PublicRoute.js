@@ -8,7 +8,7 @@ export const PublicRoute = (props, users) => {
 
     
     if (
-     props.users?.role !== ''   
+     props.users?.role === undefined   
      )
      {
       return <Route {...props} />;

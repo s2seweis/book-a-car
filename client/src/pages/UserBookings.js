@@ -37,9 +37,9 @@ function UserBookings () {
                 <Col 
                 // xl={6} lg={6} md={6} sm={6} xs={18}
                 >
-                  <p><b>{booking.car.name}</b></p>
+                  <p><b>{booking.car?.name}</b></p>
                   <p>Total hours : <b>{booking.totalHours}</b></p>
-                  <p>Rent per hour : <b>{booking.car.rentPerHour}</b></p>
+                  <p>Rent per hour : <b>{booking.car?.rentPerHour}</b></p>
                   <p>Total amount : <b>{booking.totalAmount}</b></p>
                 </Col>
 
@@ -63,7 +63,7 @@ function UserBookings () {
                 >
                   <img
                     style={{borderRadius: 5}}
-                    src={booking.car.image}
+                    src={booking.car?.image}
                     height="140"
                     className="p-2"
                   />

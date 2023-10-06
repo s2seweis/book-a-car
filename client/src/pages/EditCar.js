@@ -6,10 +6,13 @@ import Spinner from "../components/Spinner";
 import { addCar, editCar, getAllCars } from "../redux/actions/carsActions";
 
 function EditCar({ match }) {
+  console.log("Line:222", match.params.carid);
   const { cars } = useSelector((state) => state.carsReducer);
+  console.log("line:501", cars);
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.alertsReducer);
   const [car, setcar] = useState();
+  console.log("line:500", car);
   const [totalcars, settotalcars] = useState([]);
 
   const {users} = useSelector (state => state.usersReducer);
