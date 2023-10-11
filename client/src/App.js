@@ -29,8 +29,8 @@ function App () {
       <BrowserRouter>
 
         <AdminRoute users={users} path="/" exact component={Home} />
-        <UsersRoute users={users} path="/" exact component={Home} />
-        <PublicRoute users={users} path="/" exact component={Home} />
+        {/* <UsersRoute users={users} path="/" exact component={Home} /> */}
+        {/* <PublicRoute users={users} path="/" exact component={Home} /> */}
         {/* ### */}
 
 
