@@ -8,15 +8,15 @@ export const AdminRoute = (props, users) => {
     if (
       localStorage.getItem('user')
      && 
-     props.users?.role === 'admin'  
+     props.users?.role === 'admin' ||  props.users?.role === 'user' || props.users?.role === undefined
      )
      {
       return <Route {...props} />;
     }
     
     
-    // else {
-    //   props.users?.role === 'user'
-    // }
-    // return <Redirect to="/login" />;
+    else {
+      return <Redirect to="/login" />;
+    }
+
   }
