@@ -9,7 +9,7 @@
 5. If possible add a font provider via context
 
 ## Git Commands:
-- overwrite local files: 
+ ***overwrite local files***: 
 ```
 git reset --hard HEAD 
 ```
