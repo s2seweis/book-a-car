@@ -1,6 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
-import {combineReducers} from "redux";
+import {combineReducers} from 'redux';
 import { persistReducer } from 'redux-persist';
 import thunk from 'redux-thunk';
 
@@ -9,31 +9,26 @@ import { carsReducer } from './reducers/carsReducer';
 import { bookingsReducer } from './reducers/bookingsReducer';
 import { usersReducer } from './reducers/usersReducer';
 
-
-
 const rootReducer = combineReducers({
-   carsReducer,
-   alertsReducer,
-   bookingsReducer,
-   usersReducer
-})
-
-
-
+  carsReducer,
+  alertsReducer,
+  bookingsReducer,
+  usersReducer,
+});
 
 const persistConfig = {
-    key: 'root',
-    storage,
-    // whitelist: ['usersReducer' ]
+  key: 'root',
+  storage,
+  // whitelist: ['usersReducer' ]
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-    reducer: persistedReducer,
+  reducer: persistedReducer,
     
-    devTools: process.env.NODE_ENV !== 'production',
-    middleware: [thunk]
+  devTools: process.env.NODE_ENV !== 'production',
+  middleware: [thunk],
 });
 
 export default store;

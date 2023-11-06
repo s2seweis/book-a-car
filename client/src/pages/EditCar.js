@@ -1,22 +1,18 @@
-import { Col, Row, Form, Input } from "antd";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import DefaultLayout from "../components/DefaultLayout";
-import Spinner from "../components/Spinner";
-import { addCar, editCar, getAllCars } from "../redux/actions/carsActions";
+import { Col, Row, Form, Input } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import DefaultLayout from '../components/DefaultLayout';
+import Spinner from '../components/Spinner';
+import { editCar, getAllCars } from '../redux/actions/carsActions';
+import PropTypes from 'prop-types';
 
 function EditCar({ match }) {
-  console.log("Line:222", match.params.carid);
   const { cars } = useSelector((state) => state.carsReducer);
-  console.log("line:501", cars);
   const dispatch = useDispatch();
   const { loading } = useSelector((state) => state.alertsReducer);
   const [car, setcar] = useState();
-  console.log("line:500", car);
   const [totalcars, settotalcars] = useState([]);
-
   const {users} = useSelector (state => state.usersReducer);
-  console.log ('line:106', users);
 
   useEffect(() => {
     if (cars.length == 0) {
@@ -24,7 +20,6 @@ function EditCar({ match }) {
     } else {
       settotalcars(cars);
       setcar(cars.find((o) => o._id == match.params.carid));
-      console.log("line:5000",car);
     }
   }, [cars]);
 
@@ -32,7 +27,6 @@ function EditCar({ match }) {
     values._id = car._id;
 
     dispatch(editCar(values));
-    console.log(values);
   }
 
   return (
@@ -48,7 +42,6 @@ function EditCar({ match }) {
               onFinish={onFinish}
             >
               <h3>Edit Car</h3>
-
               <hr />
               <Form.Item
                 name="name"
@@ -57,7 +50,6 @@ function EditCar({ match }) {
               >
                 <Input />
               </Form.Item>
-
               <Form.Item
                 name="image"
                 label="Image url"
@@ -97,5 +89,13 @@ function EditCar({ match }) {
     </DefaultLayout>
   );
 }
+
+EditCar.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      carid: PropTypes.string.isRequired,
+    }),
+  }),
+};
 
 export default EditCar;

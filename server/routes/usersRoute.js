@@ -2,14 +2,13 @@ const express = require("express")
 const router = express.Router();
 const User = require("../models/userModel")
 
-router.post("/login", async(req, res) =>{
+router.post("/login", async (req, res) => {
 
-    const {username, password} = req.body
+    const { username, password } = req.body
 
     try {
-        const user = await User.findOne({username, password})
-        console.log("line:103", user);
-        if(user) {
+        const user = await User.findOne({ username, password })
+        if (user) {
             res.send(user)
         }
         else {
@@ -21,7 +20,7 @@ router.post("/login", async(req, res) =>{
     }
 });
 
-router.post("/register", async(req, res) =>{
+router.post("/register", async (req, res) => {
 
 
     try {

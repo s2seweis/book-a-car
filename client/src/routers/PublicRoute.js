@@ -1,23 +1,20 @@
 import React from 'react';
-import { Redirect, Route, BrowserRouter, Router, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
-
-export const PublicRoute = (props, users) => {
-    console.log("line:110", props);
-    console.log("line:111", props.users?.role);
-
+export const PublicRoute = (props) => {
     
-    if (
-     props.users?.role === undefined   
-     )
-     {
-      return <Route {...props} />;
-    }
-    
-    
-    
-    // else {
-    //   // return <Route {...props} />;
-    //   return <Redirect to="/login" />;
-    // }
+  if (
+    props.users?.role === undefined   
+  )
+  {
+    return <Route {...props} />;
   }
+};
+
+PublicRoute.propTypes = {
+  users: PropTypes.shape({
+    role: PropTypes.string,
+  }),
+  component: PropTypes.elementType.isRequired,
+};
