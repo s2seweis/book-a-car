@@ -23,6 +23,13 @@ function DefaultLayout(props) {
           Register
         </a>
       </Menu.Item>
+      <Menu.Item>
+        <a
+          href="/"
+        >
+          Home
+        </a>
+      </Menu.Item>
     </Menu>
   );
   const menu = (
@@ -91,8 +98,8 @@ function DefaultLayout(props) {
       <div className="header bs1">
         <Row gutter={16} justify='center'>
           <Col lg={20} sm={24} xs={24}>
-            <div className="d-flex justify-content-between">
-              <h1 ><b><Link to='/' style={{ color: 'orangered' }}>Book a Car</Link></b></h1>
+            <div style={{alignItems:'center'}} className="d-flex justify-content-between">
+              <h1 style={{margin:'initial'}} ><b><Link to='/' style={{ color: 'orangered' }}>Book a Car</Link></b></h1>
               {props?.users?.role === 'admin' && (
                 <Dropdown overlay={test} placement="bottomCenter">
                   <Button >{user?.username || 'Guest'}</Button>

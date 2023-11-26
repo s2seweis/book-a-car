@@ -5,3 +5,10 @@
 .ant-form-item {
     margin: 0px !important;
 }
+
+.ant-form{
+    background: white !important;
+    color: black;
+    border-radius: 25px;
+    filter: drop-shadow(2px 4px 6px white);
+}

@@ -65,6 +65,7 @@ function Home() {
             showTime={{ format: 'HH:mm' }}
             format="MMM DD yyyy HH:mm"
             onChange={setFilter}
+            style={{marginTop:'15px'}}
           />
         </Col>
       </Row>
@@ -82,11 +83,11 @@ function Home() {
                 <div className="car-content d-flex align-items-center justify-content-between">
                   <div className="text-left pl-2">
                     <p>{car.name}</p>
-                    <p> Rent Per Hour {car.rentPerHour} /-</p>
+                    <p> Rent (hour) {car.rentPerHour} /-</p>
                   </div>
                   <div>
-                    <button className="btn1 mr-2">
-                      <Link to={`/booking/${car._id}`}>Book Now</Link>
+                    <button style={{borderRadius:'10px'}} className="btn1 mr-2">
+                      <Link style={{color:'white'}} to={`/booking/${car._id}`}>Book Now</Link>
                     </button>
                   </div>
                 </div>
@@ -95,7 +96,6 @@ function Home() {
           ))}
         </Row>
       )}
-      {/* <MyDatePickerComponent /> */}
     </DefaultLayout>
   );
 }

@@ -80,35 +80,39 @@ function BookingCar({ match }) {
         className="d-flex align-items-center"
         style={{ minHeight: '90vh' }}
       >
-        <Col style={{ marginTop: '20px' }} lg={10} sm={24} xs={24}>
+        <Col style={{ marginTop: '20px' }} lg={14} sm={24} xs={24}>
           <img src={car.image} className="carimg2 bs1" />
         </Col>
         <Col style={{ display: 'contents' }} lg={10} sm={24} xs={24} className="text-right">
           <Divider type="horizontal" dashed>Car Info</Divider>
-          <div style={{ textAlign: 'right' }}>
+          <div className='car-info' style={{ textAlign: '' }}>
             <p>{car.name}</p>
             <p>{car.rentPerHour} Rent Per Hour /-</p>
             <p>Fuel Type : {car.fuelType} </p>
             <p>Capacity : {car.capacity} </p>
+            <button
+              style={{ display: 'auto', borderRadius: '20px', background:'orangered' }}
+              className="btn1 mt-2"
+              onClick={() => {
+                setShowModal(true);
+              }}
+            >
+              See Booked Slots
+            </button>
           </div>
-          <Divider type="horizontal" dashed>Select Time Slots</Divider>
-          <RangePicker
-            style={{ marginBottom: '100px' }}
-            showTime={{ format: 'HH:mm' }}
-            format="MMM DD yyyy HH:mm"
-            onChange={selectTimeSlots}
-          />
-          <button
-            className="btn1 mt-2"
-            onClick={() => {
-              setShowModal(true);
-            }}
-          >
-            See Booked Slots
-          </button>
+          {/* <Divider type="horizontal" dashed>Select Time Slots</Divider> */}
+          <div style={{margin:'0px 10px'}} className='range-container'>
+            <RangePicker
+              style={{}}
+              showTime={{ format: 'HH:mm' }}
+              format="MMM DD yyyy HH:mm"
+              onChange={selectTimeSlots}
+            />
+          </div>
+          <br />
           {from &&
             to &&
-            <div>
+            <div className='book-container'>
               <p>Total Hours : <b> {totalHours} </b></p>
               <p>Rent Per Hour : <b> {car.rentPerHour} </b></p>
               <Checkbox

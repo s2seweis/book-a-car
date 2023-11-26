@@ -21,9 +21,7 @@ function Login() {
     <div className="login">
       {loading && (<Spinner />)}
       <Row gutter={24} style={{ justifyContent: 'center' }} className="d-flex aligin-items-center">
-
-        <Col lg={24} style={{ position: 'fixed', marginTop:'300px' }}>
-
+        <Col className='login-register-page' lg={24} style={{}}>
           <img
             style={{ width: '-webkit-fill-available' }}
             data-aos="slide-right"
@@ -33,7 +31,7 @@ function Login() {
         </Col>
         <Col style={{ margin: 'auto' }} lg={8} className="text-left p-5">
           <Form layout="vertical" className="login-form p-5" onFinish={onFinish}>
-            <h1>Login</h1>
+            <h1 color='white'>Login</h1>
             <hr />
             <Form.Item
               name="username"
@@ -49,11 +47,10 @@ function Login() {
             >
               <Input />
             </Form.Item>
-
-            <button className="btn1 mt-2 mb-3">Login1</button>
-
-            <br />
-
+            <div className='button-container'>
+              <button className="btn1 mt-2 mb-3">Login</button>
+            </div>
+            {/* <br /> */}
             <div style={{ marginBottom: '15px' }}>
               <Link to="/register">Click here to Register</Link>
             </div>
