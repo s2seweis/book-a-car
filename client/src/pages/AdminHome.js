@@ -31,8 +31,8 @@ function AdminHome() {
         >
           <div style={{margin:'0px 15px 0px 15px'}} className="d-flex justify-content-between align-items-center">
             <h3 className="mt-1 mr-2">Admin Panel</h3>
-            <button className="btn1">
-              <a href="/addcar">ADD CAR</a>
+            <button className="ant-btn">
+              <a href="/addcar">Add Car</a>
             </button>
           </div>
         </Col>
@@ -50,7 +50,7 @@ function AdminHome() {
                 <img src={car.image} className="carimg" />
 
                 <div className="car-content d-flex align-items-center justify-content-between">
-                  <div style={{marginTop:'25px'}} className="text-left pl-2">
+                  <div style={{marginTop:''}} className="text-left pl-2">
                     <p>{car.name}</p>
                     <p> Rent Per Hour {car.rentPerHour} /-</p>
                   </div>
