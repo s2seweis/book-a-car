@@ -90,7 +90,16 @@ button {
   margin-top: 100px;
   height: 160px;
   transition: 0.3s;
+  min-width: 300px !important;
+  max-width: 300px;
 }
+
+@media screen and (max-width: 500px) {
+  .car {
+  width: 300px !important; 
+  }
+}
+
 .car:hover {
   height: 220px;
 }
